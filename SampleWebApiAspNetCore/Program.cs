@@ -41,6 +41,9 @@ builder.Services.AddDbContext<FoodDbContext>(opt =>
 
 builder.Services.AddMapster();
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+app.Urls.Add($"http://0.0.0.0:{port}");
+
 var app = builder.Build();
 
 var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
